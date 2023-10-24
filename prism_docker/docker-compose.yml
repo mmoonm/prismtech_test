@@ -1,0 +1,44 @@
+version: '3.1'
+
+networks:
+  prismnetwork:
+    external: true
+
+services:
+  nginx:
+    container_name: prism_nginx
+    image: nginx
+    networks:
+      - prismnetwork
+    ports:
+     - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+  
+  prismdb:
+    container_name: prismdb
+    image: mysql
+    command: mysqld --default-authentication-plugin=caching_sha2_password
+    networks:
+      - prismnetwork
+    environment:
+      MYSQL_ROOT_PASSWORD: prism
+    volumes:
+      - ./database/dbinit:/docker-entrypoint-initdb.d/
+    ports:
+      - 3306:3306
+  
+  prismapi:
+    container_name: prismapi
+    image: ${BACKENDIMAGE}
+    networks:
+      - prismnetwork
+    volumes:
+      - ${SOURCEROOT}/prism/:/backend/
+      - ./backend/venv/:/opt/venv/
+      - ./backend/scripts/entrypoint.sh/:/entrypoint.sh
+      - ./backend/scripts/migrate.sh/:/migrate.sh
+      - ./backend/scripts/makemigrations.sh/:/makemigrations.sh
+      - ./backend/scripts/wait-for-db.sh:/wait-for-db.sh
+      
