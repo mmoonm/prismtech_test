@@ -1,2 +1,2 @@
 cd backend
-/opt/venv/bin/python manage.py migrate prismapp --database=prismdb
+/opt/venv/bin/python manage.py migrate prismapp

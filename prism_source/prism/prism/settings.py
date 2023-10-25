@@ -31,14 +31,16 @@ ALLOWED_HOSTS = ["prism-test.me"]
 # Application definition
 
 INSTALLED_APPS = [
+    'prismapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'prismapp'
+    # 'rest_framework',
+    # 'rest-framework.authtoken',
+    # 'rest-framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -76,8 +78,7 @@ WSGI_APPLICATION = 'prism.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {},
-    'prismdb': {
+    'default': {
                 'ENGINE': 'django.db.backends.mysql',
                 'NAME': 'prism',
                 'USER': 'prism',
