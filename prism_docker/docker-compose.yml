@@ -31,14 +31,13 @@ services:
   
   prismapi:
     container_name: prismapi
-    image: ${BACKENDIMAGE}
+    build: ./backend/image
     networks:
       - prismnetwork
     volumes:
       - ${SOURCEROOT}/prism/:/backend/
-      - ./backend/venv/:/opt/venv/
       - ./backend/scripts/entrypoint.sh/:/entrypoint.sh
-      - ./backend/scripts/migrate.sh/:/backend/migrate.sh
-      - ./backend/scripts/makemigrations.sh/:/backend/makemigrations.sh
+      - ./backend/scripts/migrate.sh/:/migrate.sh
+      - ./backend/scripts/makemigrations.sh/:/makemigrations.sh
       - ./backend/scripts/wait-for-db.sh:/wait-for-db.sh
       
