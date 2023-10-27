@@ -1,11 +1,17 @@
-__all__ = ['AbstractAPIView']
+__all__ = ['BaseAPIView']
+
 from rest_framework.views import APIView
+from rest_framework.response import Response
+import logging
+from django.conf import settings
 
 
-class AbstractAPIView(APIView):
+class BaseAPIView(APIView):
+    def __init__(self, logger_name=None):
+        super().__init__()
 
     @staticmethod
-    def _build_response(success, data=None, errors=None, messages=None, response_code=None, http_status=200, *args, **kwargs):
+    def _build_response(success, data=None, errors=None, messages=None, response_code=None):
         response_data = {'success': success}
 
         if data is not None:
@@ -20,7 +26,5 @@ class AbstractAPIView(APIView):
         if response_code is not None:
             response_data['response_code'] = response_code
 
-        if http_status is not None:
-            response_data['http_status'] = http_status
+        return Response(response_data)
 
-        return response_data
