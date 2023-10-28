@@ -16,7 +16,7 @@ I. Setup
 II. Test
 1. Open Postman, import collection from file Prism.postman_collection.json
 2. Send request to test API.
-Except for auth-register and auth-login, All of the requests need authorization to work correctly.
+3. Except for auth-register and auth-login, All of the requests need authorization to work correctly.
 	- Send auth-login and copy the access token in the response
 	- Click Prism collection, choose tag Authorization
 	- Choose Type is Bearer Token
