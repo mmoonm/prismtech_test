@@ -1,2 +1,2 @@
 cd backend
-/opt/venv/bin/python manage.py migrate prismapp
+/opt/venv/bin/python manage.py migrate

@@ -10,7 +10,6 @@ from prismapp.modules.merchant.create_merchant.dtos import MerchantInformation
 from prismapp.modules.merchant.create_merchant.exceptions import UserAlreadyHasAMerchant
 from prismapp.modules.merchant.create_merchant.serializers import InputSerializer
 from prismapp.modules.merchant.create_merchant.service import CreateMerchantService
-from dacite import from_dict
 
 
 class CreateMerchant(BaseAPIView):
