@@ -14,10 +14,10 @@ I. Setup
 4. cd to folder prism_docker. run "docker compose up -d". There are 3 container are executed (prismdb, prism_nginx, prismapi).
 If you already have other docker containers, please make sure ports 3306 and 80 are available.
 5. In Docker Desktop, open container prismapi, tab Exec. Execute the following commands to migrate database
-	bash
-	cd ..
-	sh makemigrations.sh
-	sh migrate.sh
+	- bash
+	- cd ..
+	- sh makemigrations.sh
+	- sh migrate.sh
 	
 II. Test
 1. Open Postman, import collection from file Prism.postman_collection.json
