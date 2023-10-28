@@ -12,6 +12,7 @@ I. Setup
 	127.0.0.1 prismdb
 	127.0.0.1 prism-test.me
 4. cd to folder prism_docker. run "docker compose up -d"
+* If you already have other docker containers, please make sure ports 3306 and 80 are available.
 	
 II. Test
 1. Open Postman, import collection from file Prism.postman_collection.json
